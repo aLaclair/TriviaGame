@@ -1,0 +1,42 @@
+@font-face {
+    src: url(../images/who\ asks\ satan.ttf);
+    font-family: title;
+}
+html {
+    background-image: url(../images/spookygraveyard.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+body {
+    height: 85%;
+    
+}
+.container {
+    width: 75%;
+    text-align: center;
+    margin: 100px auto;
+    font-family: title;
+    letter-spacing: 5px;
+    color: red;
+    height: 85%;
+}
+.title {
+    padding: 20px;
+    font-size: 100px
+}
+.start {
+    width: 25%;
+    height: 50px;
+    border: 2px solid black;
+    margin-top: 200px;
+}
+button:hover {
+    background-color: red;
+}
+.main-game input {
+    display: none;
+}
+.main-game label:hover {
+    background-color: red;
+}
