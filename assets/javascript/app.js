@@ -38,10 +38,10 @@ $('document').ready(function() {
         nextQuestion()
     })
     function nextQuestion() {
-        if (questionCounter == questions.length) {
+        if (questionCounter == questions.length) { // if there are no more questions left, display game over screen
         $('.main-game').empty().append('Game Over').append('<br>Correct Guesses: ' + correct).append('<br>Incorrect Guesses: ' + incorrect).append('<br>Timeouts: ' + timeout)
         $('.main-game').append('<br><button class="restart">Restart</button>')
-        $('.restart').click(function restartGame() {
+        $('.restart').click(function restartGame() { // restart button resets value and starts from question 1
             questionCounter = 0
             correct = 0
             incorrect = 0
@@ -53,7 +53,7 @@ $('document').ready(function() {
         let timer = setInterval(() => {
         $('.timer').show()
         $('.timer').text(sec--)
-        if(sec < 0) {
+        if(sec < 0) { // if no answer is selected within 15 seconds, show correct answer and continue game, increase timeout variable by 1 for end game screen
             $('.main-game').empty().append('Foolish Mortal').append('<br> The correct answer was ' + questions[questionCounter].correct)
             questionCounter++
             timeout++
@@ -63,25 +63,24 @@ $('document').ready(function() {
         }
         }, 1000);  
         sec = 15
-        $('.main-game').empty()
-          
+        $('.main-game').empty() // empty the div, and append new question and answers
         $('.main-game').append('<br>' + questions[questionCounter].question + '<br<')
         for (key in questions[questionCounter].answers) {
             $('.main-game').append('<br><button class="btn" value="' + questions[questionCounter].answers[key] + '">' + questions[questionCounter].answers[key] + '</button>')
         }
-    $('.btn').click(function clicked() {
-        if ($(this).val() == questions[questionCounter].correct) {
+    $('.btn').click(function clicked() { // add click events to each answer button
+        if ($(this).val() == questions[questionCounter].correct) { //if correct then display nice job mortal. Set interval for 5 seconds and move on 
         $('.main-game').empty().append('Nice Job Mortal')
         questionCounter++
-        correct++
+        correct++ //increase correct by for end game screen
         setTimeout(nextQuestion, 4000)
         clearInterval(timer)
         $('.timer').hide()
         }
-        else {
+        else { // if incorrect then display incorrect and correct answer. incorrect +1 for end game screen
         $('.main-game').empty().append('Foolish Mortal').append('<br> The correct answer was ' + questions[questionCounter].correct)
         questionCounter++
-        incorrect++
+        incorrect++ //increase incorrect by 1 for end game screen
         setTimeout(nextQuestion, 4000)
         clearInterval(timer)
         $('.timer').hide()
