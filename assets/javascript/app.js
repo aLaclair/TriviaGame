@@ -7,7 +7,8 @@ $('document').ready(function() {
             king: "Stephen King",
             burton: "Tim Burton",
         },
-        correct: "Jordan Peele"
+        correct: "Jordan Peele",
+        image: '<img src="./assets/images/getout.gif">'
     },{
         question: "What was Rob Zombie's occupation before making movies?",
         answers: {
@@ -16,7 +17,8 @@ $('document').ready(function() {
             web: "Web Developer",
             music: "Musician",
         },
-        correct: "Musician"
+        correct: "Musician",
+        image: '<img src="./assets/images/zombie.gif">'
     },{
         question: "Edgar Allan Poe was born on what day?",
         answers: {
@@ -25,7 +27,8 @@ $('document').ready(function() {
             jan19: "January 19th",
             hallo: "October 31st",
         },
-        correct: "January 19th"
+        correct: "January 19th",
+        image: '<img src="./assets/images/raven.gif">'
     }
     ]
     let questionCounter = 0
@@ -54,7 +57,8 @@ $('document').ready(function() {
         $('.timer').show()
         $('.timer').text(sec--)
         if(sec < 0) { // if no answer is selected within 15 seconds, show correct answer and continue game, increase timeout variable by 1 for end game screen
-            $('.main-game').empty().append('Foolish Mortal').append('<br> The correct answer was ' + questions[questionCounter].correct)
+            $('.main-game').empty().append('Foolish Mortal').append('<br> The correct answer was ' + questions[questionCounter].correct + '<br>')
+            $('.main-game').append(questions[questionCounter].image)
             questionCounter++
             timeout++
             setTimeout(nextQuestion, 4000)
@@ -62,23 +66,27 @@ $('document').ready(function() {
             $('.timer').hide()
         }
         }, 1000);  
-        sec = 15
+        sec = 10
         $('.main-game').empty() // empty the div, and append new question and answers
-        $('.main-game').append('<br>' + questions[questionCounter].question + '<br<')
+        $('.main-game').append('<br><p>' + questions[questionCounter].question + '</p>')
+        $('.main-game').append('<div class="buttons"></div>')
         for (key in questions[questionCounter].answers) {
-            $('.main-game').append('<br><button class="btn" value="' + questions[questionCounter].answers[key] + '">' + questions[questionCounter].answers[key] + '</button>')
+            $('.buttons').append('<br><button class="btn" value="' + questions[questionCounter].answers[key] + '">' + questions[questionCounter].answers[key] + '</button>')
         }
     $('.btn').click(function clicked() { // add click events to each answer button
         if ($(this).val() == questions[questionCounter].correct) { //if correct then display nice job mortal. Set interval for 5 seconds and move on 
-        $('.main-game').empty().append('Nice Job Mortal')
+        $('.main-game').empty().append('Nice Job Mortal<br>')
+        $('.main-game').append(questions[questionCounter].image)
         questionCounter++
         correct++ //increase correct by for end game screen
         setTimeout(nextQuestion, 4000)
         clearInterval(timer)
         $('.timer').hide()
+        
         }
         else { // if incorrect then display incorrect and correct answer. incorrect +1 for end game screen
-        $('.main-game').empty().append('Foolish Mortal').append('<br> The correct answer was ' + questions[questionCounter].correct)
+        $('.main-game').empty().append('Foolish Mortal').append('<br> The correct answer was ' + questions[questionCounter].correct + '<br>')
+        $('.main-game').append(questions[questionCounter].image)
         questionCounter++
         incorrect++ //increase incorrect by 1 for end game screen
         setTimeout(nextQuestion, 4000)
