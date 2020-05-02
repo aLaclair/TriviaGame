@@ -29,6 +29,36 @@ $('document').ready(function() {
         },
         correct: "January 19th",
         image: '<img src="./assets/images/raven.gif">'
+    },{
+        question: "What was the name of Stephen King's famous clown?",
+        answers: {
+            penny: "Pennywise",
+            tiwsty: "Twisty",
+            cap: "Captain Spaulding",
+            krust: "Krusty"
+        },
+        correct: "Pennywise",
+        image: '<img src="./assets/images/penny.gif">'
+    },{
+        question: 'What is the name of the large shadow monster in "Stranger Things"?',
+        answers: {
+            dem: "Demogorgon",
+            mind: "Mind Flayer",
+            thing: "The Thing",
+            upside: "Upside Down"
+        },
+        correct: "Mind Flayer",
+        image: '<img src="./assets/images/mind.gif">'
+    },{
+        question: 'Which of the following lists are original Universal Classic Monsters?',
+        answers: {
+            list1: "Creature, Dracula, Freddy, Jason",
+            list2: "Norman Bates, Leatherface, Frankenstein, Michael Meyers",
+            list3: "Freddy, Jason, Leatherface, Michael Meyers",
+            list4: "Dracula, Frankenstein, Creature, The Mummy"
+        },
+        correct: "Dracula, Frankenstein, Creature, The Mummy",
+        image: '<img src="./assets/images/creature.gif">'
     }
     ]
     let questionCounter = 0
